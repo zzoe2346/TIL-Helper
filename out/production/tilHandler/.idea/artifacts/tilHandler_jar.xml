@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tilHandler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tilHandler_jar</output-path>
+    <root id="archive" name="tilHandler.jar">
+      <element id="module-output" name="tilHandler" />
+    </root>
+  </artifact>
+</component>
