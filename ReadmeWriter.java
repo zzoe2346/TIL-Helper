@@ -1,23 +1,22 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MarkdownWriter {
+public class ReadmeWriter {
     public static final String HEADER_CONTENT =
             """
                     # TIL(Today I Learned)
-                    > 기껏 공부해놓고 계속 까먹어서 기록하려함
+                    > 세상에서 가장 어려운 일은 꾸준히 하는 것이다. 하지만 꾸준히 할 수 있게 되면 세상의 모든 것이 쉬워진다.
                                 
                     ## Category
                     """;
 
-    public void write(HashMap<String, ArrayList<String>> map, HashMap<String, String> titleMap) throws IOException {
+    public static void write(String path,HashMap<String, ArrayList<String>> map, HashMap<String, String> titleMap) throws IOException {
         // 목표 폴더 경로
-        String folderPath = "/Users/seonghunjeong/til";
+        String folderPath = path;
 
         // 폴더를 나타내는 File 객체 생성
         File file = new File(folderPath, "README.md");
@@ -39,6 +38,8 @@ public class MarkdownWriter {
                 fileWriter.write("\n");
             }
             fileWriter.flush();
+
+
         } else {
             System.out.println("fail");
         }
