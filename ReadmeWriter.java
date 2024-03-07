@@ -39,7 +39,6 @@ public class ReadmeWriter {
             }
             fileWriter.flush();
 
-
         } else {
             System.out.println("fail");
         }

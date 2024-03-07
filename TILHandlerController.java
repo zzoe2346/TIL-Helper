@@ -1,14 +1,16 @@
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class TILHandlerController {
 
     public static void main(String[] args) throws IOException {
-        String path = "/Users/seonghunjeong/til";
-        //String path = "./"; ㅅ이거 쓰면된다.
+        //경로
+        String path = "./";
+        //파일(깃 저장소) 객체 생성
         File folder = FolderExplorer.getFiles(path);
-
+        //깃 저장소 내 카테고리명, 문서명 추출
         FolderExplorer.extractTitles(folder);
 
         ReadmeWriter.write(path,FolderExplorer.getCategoryAndContentListMap(), FolderExplorer.getlocalTitleAndViewTitle());
@@ -25,12 +27,20 @@ public class TILHandlerController {
                 GitAutoCommit.executeCommand(path, "git", "add", ".");
 
                 // Git commit
-                GitAutoCommit.executeCommand(path, "git", "commit", "-m", "Automated commit");
+                // 현재 날짜 얻기
+                LocalDate currentDate = LocalDate.now();
+
+                // 년, 월, 일 얻기
+                int year = currentDate.getYear();
+                int month = currentDate.getMonthValue();
+                int day = currentDate.getDayOfMonth();
+
+                String commitMessage = year+"-"+month+"-"+day+"(Automated commit)";
+                GitAutoCommit.executeCommand(path, "git", "commit", "-m", commitMessage);
 
                 // Git push
                 GitAutoCommit.executeCommand(path, "git", "push");
-                System.out.println("push 성공");
-                System.out.println("아무키나 누르면 프로그램이 끝납니다. 화이팅!");
+                System.out.println("성공했습니다. 화이팅!");
                 scanner.nextLine();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
