@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ReadmeWriter {
     public static final String HEADER_CONTENT =
@@ -14,12 +15,10 @@ public class ReadmeWriter {
                     ## Category
                     """;
 
-    public static void write(String path,HashMap<String, ArrayList<String>> map, HashMap<String, String> titleMap) throws IOException {
-        // 목표 폴더 경로
-        String folderPath = path;
+    public static void write(String path, TreeMap<String, ArrayList<String>> map, HashMap<String, String> titleMap) throws IOException {
 
         // 폴더를 나타내는 File 객체 생성
-        File file = new File(folderPath, "README.md");
+        File file = new File(path, "README.md");
         //만약 이미 README.md가 있을 경우 삭제
         file.delete();
         //파일 생성

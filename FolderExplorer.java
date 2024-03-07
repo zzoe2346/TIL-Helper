@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class FolderExplorer {
-    static HashMap<String, ArrayList<String>> categoryAndContentListMap;
+    static TreeMap<String, ArrayList<String>> categoryAndContentListMap;
     static HashMap<String, String> localTitleAndViewTitle;
 
     public static File getFiles(String path) {
@@ -35,7 +35,7 @@ public class FolderExplorer {
             queue.add(file);
         }
         //카테고리와 그 카테고리 내부 문서 리스트에 대한 맵 자료구조
-        categoryAndContentListMap = new HashMap<>();
+        categoryAndContentListMap = new TreeMap<>();
         //문서 파일명과 그 파일 내부에 있는 문서제목에 대한 맵 자료구조 => 깃허브 README에서 링크걸때 공백, 특수문자들있으면 파싱됨. 이거 여기서 해결가능할거 같은데 나중에 gogo
         localTitleAndViewTitle = new HashMap<>();
 
@@ -57,7 +57,7 @@ public class FolderExplorer {
         }
     }
 
-    public static HashMap<String, ArrayList<String>> getCategoryAndContentListMap() {
+    public static TreeMap<String, ArrayList<String>> getCategoryAndContentListMap() {
         return categoryAndContentListMap;
     }
 
