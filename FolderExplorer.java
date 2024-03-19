@@ -28,6 +28,7 @@ public class FolderExplorer {
             if (file.getName().charAt(0) == '.' || file.getName().equals("README.md") || !file.isDirectory()) continue;
             //폴더명에 공백있으면 에러발생.
             if (file.getName().contains(" ")) {
+                //System.out.println(file.getName());
                 System.out.println("파일 혹은 폴더명에는 한글,영문,- 만 사용해주세요.");
                 return;
             }

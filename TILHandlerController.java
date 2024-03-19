@@ -7,8 +7,8 @@ public class TILHandlerController {
 
     public static void main(String[] args) throws IOException {
         //경로
-        //String path = "./";
-        String path = "/Users/seonghunjeong/til";
+        String path = ".";
+       //String path = "/Users/seonghunjeong/til";
         //파일(깃 저장소) 객체 생성
         File folder = FolderExplorer.getFiles(path);
         //깃 저장소 내 카테고리명, 문서명 추출
