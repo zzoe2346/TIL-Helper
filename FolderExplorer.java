@@ -49,7 +49,12 @@ public class FolderExplorer {
             categoryAndContentListMap.put(categoryFolderName, new ArrayList<>());
             if (categoryFolder.isDirectory()) {
                 for (File file : categoryFolder.listFiles()) {
-                    categoryAndContentListMap.get(categoryFolderName).add(file.getName());
+                    String fileName = file.getName();
+                    //.md 인지 확인. .DS_STORE파일이 자동으로 생성되는 걸 확인. 이를 방지
+
+                    if(fileName.substring(fileName.length()-3).equals(".md")){
+                        categoryAndContentListMap.get(categoryFolderName).add(file.getName());
+                    }
                     //마크다운파일 내부를 읽어서 제목 추출.
                     BufferedReader br = new BufferedReader(new FileReader(file));
                     localTitleAndViewTitle.put(file.getName(), br.readLine());
